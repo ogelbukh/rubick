@@ -65,16 +65,6 @@ This section proposes data model format which allows to describe an OpenStack
 installation. The model includes data regarding physical infrastructure, logical
 topology of services and mapping between the two.
 
-Architecture data model could be serialized as JSON or YaML document of the
-following format::
+Current version of the model is described in the following classes diagram:
 
-    openstack
-        nodes
-            node1
-                -param1: value
-                -param2: value
-        services
-            nova
-                configuration
-                    -param1: value
-                    -param2: value
+.. image:: images/rubick.model.png

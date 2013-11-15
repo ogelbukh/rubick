@@ -6,6 +6,7 @@ frame "Rubick" {
     [Config data\nextractor]
     [Heat metadata\n plugin]
     [SSH metadata\nplugin]
+    [VMWare metadata\nplugin]
     [...]
     [Config data\nstore]
     () "rubick.model"
@@ -19,18 +20,32 @@ frame "Heat" {
     [Heat API]
 }
 
+frame "vCenter" {
+    [vCenter]
+}
+
+frame "Nova" {
+    [nova-compute]
+}
+
 () Stack
+
+() "nova.conf"
 
 [Rubick API] -- rubick.model
 [Config data\nstore] -- rubick.model
 [Heat API] -up-> Stack
+[vCenter] -up-> [VMWare metadata\nplugin]
 Stack -up-> [Heat metadata\n plugin]
 [Config data\nextractor] -up- rubick.model
 [Rule engine] -- rubick.model
 [Config data\nextractor] -- [Heat metadata\n plugin]
 [Config data\nextractor] -- [...]
 [Config data\nextractor] -- [SSH metadata\nplugin]
+[Config data\nextractor] -- [VMWare metadata\nplugin]
 [Rule engine] -up- [healthcheck\nruleset]
 [Rule engine] -up- [best practices\nruleset]
+[nova-compute] -- nova.conf
+nova.conf --> [Rubick API]
 
 @enduml
