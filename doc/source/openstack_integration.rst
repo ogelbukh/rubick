@@ -88,29 +88,25 @@ This section is a summary of requirements to common configuration validation
 framework raised in ML discussion of the topic and in IRC discussions with
 VMWare subteam.
 
-1. (ndipanov) Integrate with existing validation hook in the service class
-http://git.openstack.org/cgit/openstack/nova/tree/nova/service.py#n283
-1. (jgarbutt) Minimize performance effect on CI gate tests
-1. (ndipanov) Consider upgrade implications
-1. (gkotton) Stand-alone tool which will also work across services
-1. (gkotton) Discover components to validate configurations for (e.g. if Neutron
-   is configured, then check Neutron credentials are correct)
-1. (tjones) Stand-alone tool which will be run after initial deployment
-1. (tjones) Track validated configurations and only revalidate if needed
-1. (rbryant) Run validation during service startup unless that affects
-   performance
-1. (jgordon) catch following error types: a) duplicate/nonexistant options; b)
-   invalid mix of settings
-1. (jgordon) generic standalone tool for case a) is in nova/tools:
-https://git.openstack.org/cgit/openstack/nova/tree/tools/config/analyze_opts.py
-1. (markmc) encode validation options in config option declaration
-1. (jgarbutt) +1 to jgordon, a) encoded in flag definitions b) standalone tools
-1. (hartsock) library to be reused between standalone tool and service init-hook
-1. (dhellman) coordinate with
-https://etherpad.openstack.org/p/icehouse-oslo-config-import-side-effects
-1. (dhellman) integrate with existing sample file generator
-1. (lorin) integrate with generate documentation from config files and transform
-   constraints into human-readable version
+#. (ndipanov) Integrate with existing validation hook in the service class http://git.openstack.org/cgit/openstack/nova/tree/nova/service.py#n283
+#. (jgarbutt) Minimize performance effect on CI gate tests
+#. (ndipanov) Consider upgrade implications
+#. (gkotton) Stand-alone tool which will also work across services
+#. (gkotton) Discover components to validate configurations for (e.g. if Neutron is configured, then check Neutron credentials are correct)
+#. (tjones) Stand-alone tool which will be run after initial deployment
+#. (tjones) Track validated configurations and only revalidate if needed
+#. (rbryant) Run validation during service startup unless that affects performance
+#. (jgordon) catch following error types: a) duplicate/nonexistant options; b) invalid mix of settings
+#. (jgordon) generic standalone tool for case a) is in nova/tools: https://git.openstack.org/cgit/openstack/nova/tree/tools/config/analyze_opts.py
+#. (markmc) encode validation options in config option declaration
+#. (jgarbutt) +1 to jgordon, a) encoded in flag definitions b) standalone tools
+#. (hartsock) library to be reused between standalone tool and service init-hook
+#. (dhellman) coordinate with https://etherpad.openstack.org/p/icehouse-oslo-config-import-side-effects
+#. (dhellman) integrate with existing sample config file generator
+#. (lorin) integrate with generate documentation from config files and transform constraints into human-readable version
+
+Use Case #2 implementation plan
++++++++++++++++++++++++++++++++
 
 As a part of this use case, we plan to contribute the extended typization of
 configuration parameters and corresponding validations to oslo.config library.
